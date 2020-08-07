@@ -1,39 +1,53 @@
-{{diagnostic}}
 
-<form (ngSubmit)="onSubmit()" #exampleForm="ngForm" novalidate>
+<div [hidden]="!submitted"
+     class="alert alert-success"> Form has been submitted
+     </div>
 
+<!-- Error handinling from form post request -->
+	<div class="alert alert-danger" *ngIf="errorMsg">
+		{{errorMsg}}
+	</div>
+  
 
+<form id="form" (ngSubmit)="onSubmit()" #exampleForm="ngForm" novalidate>
 	<div class="form-group">
 		<label for="name">Display Name:</label>
 		<input id="name" class="form-control" required type="text" [(ngModel)]="model.name" name="name"
-          #name="ngModel" />
-
-		<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-			Name is required
+          #name="ngModel" pattern = "^\S*$" />
+		<div *ngIf="name.errors && (name.invalid ||name.touched)">
+			<div *ngIf="name.errors.required && name.touched">Name is required</div>
+			<div *ngIf="name.errors.pattern">No Spaces allowed</div>
 		</div>
-
 	</div>
 
 
 	<div class="form-group">
-		<label for="date">Date:</label>
-		<input id="date" class="form-control" required type="date" [(ngModel)]="model.date" name="date"/>
-                </div>
+		<label for="dob">Date of birth:</label>
+		<input id="dob" class="form-control" required type="date" [(ngModel)]="model.dob" name="dob"/>
+  </div>
 
 
 		<div class="form-group">
 			<label for="file">Select a file:</label>
-			<input id="file" class="form-control" type="file" name="file" [(ngModel)]="model.file" name="file">
-						</div>
+			<input id="file" class="form-control" type="file" name="file" [(ngModel)]="model.file">
+		</div>
 
-			<div class="form-group">
-				<label for="option1">Option 1</label>
-				<input id="option1" type="radio" value="option1" name="option" [(ngModel)]="model.option"  >
-				<label for="option2">Option 2</label>
-				<input id="option2" type="radio" value="option2" name="option" [(ngModel)]="model.option"  >
-</div>
+		<div class="form-group">
+
+      <fieldset>
+<legend>Choose an option</legend>
+			<label for="option1">Option 1</label>
+			<input id="option1" type="radio" value="option1" name="option" [(ngModel)]="model.option" 
+        required  >
+			<label for="option2">Option 2</label>
+			<input id="option2" type="radio" value="option2" name="option" [(ngModel)]="model.option"  >
+      </fieldset>
+
+    </div>
 
 				<button type="submit"
+        name="submit"
+        value="submit-form"
 	        class="btn btn-primary"
 	        [disabled]="exampleForm.invalid">Submit
 	</button>

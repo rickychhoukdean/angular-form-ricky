@@ -1,7 +1,7 @@
 export class Example {
   constructor(
     public name: string = "",
-    public date: string = "",
+    public dob: string = "",
     public file: string = "",
     public option: string = "option1",
   ) {}

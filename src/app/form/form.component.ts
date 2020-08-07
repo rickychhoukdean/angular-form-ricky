@@ -11,28 +11,16 @@ export class FormComponent implements OnInit {
   model: Example = new Example();
   constructor(private _httpService: HttpService) {}
 
-  submitted = false;
+  submitted: Boolean = false;
+  errorMsg: String = "";
 
   onSubmit() {
-    this.submitted = true;
-    console.log(this.model);
-    this._httpService
-      .postData(this.model)
-      .subscribe(
-        data => console.log("data", data),
-        error => console.error("error", error)
-      );
-    //  this._httpService
-    //   .getData()
-    //   .subscribe(
-    //     data => console.log("data", data),
-    //     error => console.error("error", error)
-    //   );
+    this._httpService.postData(this.model).subscribe(
+      data => {
+        this.submitted = true;
+      },
+      error => (this.errorMsg = `Error submitting form : ${error.statusText}`)
+    );
   }
-
-  get diagnostic() {
-    return JSON.stringify(this.model);
-  }
-
   ngOnInit() {}
 }
