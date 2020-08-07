@@ -8,20 +8,26 @@ import { HttpService } from "./http.service";
   styleUrls: ["./form.component.scss"]
 })
 export class FormComponent implements OnInit {
-
-constructor(private _httpService:HttpService){}
+  model: Example = new Example();
+  constructor(private _httpService: HttpService) {}
 
   submitted = false;
-
-  model: Example = new Example();
 
   onSubmit() {
     this.submitted = true;
     console.log(this.model);
-    this._httpService.postData(this.model).subscribe(
-      data=>console.log("data",data),
-      error=>console.error("error",error)
-    )
+    this._httpService
+      .postData(this.model)
+      .subscribe(
+        data => console.log("data", data),
+        error => console.error("error", error)
+      );
+    //  this._httpService
+    //   .getData()
+    //   .subscribe(
+    //     data => console.log("data", data),
+    //     error => console.error("error", error)
+    //   );
   }
 
   get diagnostic() {

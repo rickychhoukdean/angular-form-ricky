@@ -1,44 +1,40 @@
-
 {{diagnostic}}
 
-		<form (ngSubmit)="onSubmit()" #exampleForm="ngForm" novalidate>
+<form (ngSubmit)="onSubmit()" #exampleForm="ngForm" novalidate>
 
 
-				<div class="form-group">
-					<label for="name">Display Name:</label>
-					<input id="name" class="form-control" required type="text" [(ngModel)]="model.name" name="name"
+	<div class="form-group">
+		<label for="name">Display Name:</label>
+		<input id="name" class="form-control" required type="text" [(ngModel)]="model.name" name="name"
           #name="ngModel" />
 
-					<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-						Name is required
-					</div>
+		<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+			Name is required
+		</div>
 
-				</div>
+	</div>
 
 
-				<div class="form-group">
-					<label for="date">Date:</label>
-					<input id="date" class="form-control" required type="date" [(ngModel)]="model.date" name="date"/>
+	<div class="form-group">
+		<label for="date">Date:</label>
+		<input id="date" class="form-control" required type="date" [(ngModel)]="model.date" name="date"/>
                 </div>
 
 
-					<div class="form-group">
-						<label for="myfile">Select a file:</label>
-						<input id="myfile" class="form-control" type="file" name="myfile" [(ngModel)]="model.myfile" name="myfile">
+		<div class="form-group">
+			<label for="file">Select a file:</label>
+			<input id="file" class="form-control" type="file" name="file" [(ngModel)]="model.file" name="file">
 						</div>
 
-						<div class="form-group">
+			<div class="form-group">
+				<label for="option1">Option 1</label>
+				<input id="option1" type="radio" value="option1" name="option" [(ngModel)]="model.option"  >
+				<label for="option2">Option 2</label>
+				<input id="option2" type="radio" value="option2" name="option" [(ngModel)]="model.option"  >
+</div>
 
-  <label for="option1">Option 1</label>
-   <input id="option1" type="radio" value="option1" name="option" [(ngModel)]="model.option"  >  
-     <label for="option2">Option 2</label>
-   <input id="option2" type="radio" value="option2" name="option" [(ngModel)]="model.option"  > 
-
-
-						</div>
-
-						<button type="submit"
+				<button type="submit"
 	        class="btn btn-primary"
-	        [disabled]="example.invalid">Submit
+	        [disabled]="exampleForm.invalid">Submit
 	</button>
-			</form>
+</form>

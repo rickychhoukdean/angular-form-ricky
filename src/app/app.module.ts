@@ -8,7 +8,7 @@ import { ListComponent } from './list/list.component';
 import { HttpService } from './form/http.service';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
+  imports:      [ BrowserModule, FormsModule, HttpClientModule ],
   declarations: [ AppComponent, FormComponent, ListComponent ],
   bootstrap:    [ AppComponent ],
   providers: [HttpService]
