@@ -3,6 +3,8 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Example } from './example';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { FileUploader} from 'ng2-file-upload';
+
 
 
 @Injectable()
@@ -18,3 +20,6 @@ errorHandler(error:HttpErrorResponse){
 }
 
 }
+
+
+

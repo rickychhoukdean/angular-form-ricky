@@ -1,4 +1,4 @@
-@import '~/styles.mixins.scss'
+@import '../../styles/mixins.scss';
 
 
 .form-group{
@@ -9,15 +9,6 @@
   margin-bottom:2rem;
 
  @include respond(tab-port){
-      top: 4rem;
-      right: 4rem;
+      width:100%
     }
-
-
-    @include respond(phone){
-      top: 3rem;
-      right: 3rem;
-    }
-
-
 }

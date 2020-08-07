@@ -1,15 +1,13 @@
-
-<div [hidden]="!submitted"
-     class="alert alert-success"> Form has been submitted
-     </div>
+<div [hidden]="!submitted" class="alert alert-success"> Form has been submitted
+</div>
 
 <!-- Error handinling from form post request -->
-	<div class="alert alert-danger" *ngIf="errorMsg">
-		{{errorMsg}}
-	</div>
-  
+<div class="alert alert-danger" *ngIf="errorMsg">
+	{{errorMsg}}
+</div>
 
 <form id="form" (ngSubmit)="onSubmit()" #exampleForm="ngForm" novalidate>
+	<!-- Name input field -->
 	<div class="form-group">
 		<label for="name">Display Name:</label>
 		<input id="name" class="form-control" required type="text" [(ngModel)]="model.name" name="name"
@@ -20,35 +18,39 @@
 		</div>
 	</div>
 
-
+	<!-- DOB input field -->
 	<div class="form-group">
 		<label for="dob">Date of birth:</label>
 		<input id="dob" class="form-control" required type="date" [(ngModel)]="model.dob" name="dob"/>
   </div>
 
-
+		<!-- File upload field -->
 		<div class="form-group">
-			<label for="file">Select a file:</label>
-			<input id="file" class="form-control" type="file" name="file" [(ngModel)]="model.file">
+			<input type="file" name="file" ng2FileSelect [uploader]="uploader" />
 		</div>
 
-		<div class="form-group">
-
-      <fieldset>
-<legend>Choose an option</legend>
-			<label for="option1">Option 1</label>
-			<input id="option1" type="radio" value="option1" name="option" [(ngModel)]="model.option" 
+			<!-- Option radio buttons field -->
+			<div class="form-group">
+				<fieldset>
+					<legend>Choose an option</legend>
+					<label for="option1">Option 1</label>
+					<input id="option1" type="radio" value="option1" name="option" [(ngModel)]="model.option"
         required  >
-			<label for="option2">Option 2</label>
-			<input id="option2" type="radio" value="option2" name="option" [(ngModel)]="model.option"  >
+					<label for="option2">Option 2</label>
+					<input id="option2" type="radio" value="option2" name="option" [(ngModel)]="model.option"  >
       </fieldset>
+			</div>
 
-    </div>
-
+			<!-- Submit button buttons field -->
+			<div class="form-group">
 				<button type="submit"
         name="submit"
         value="submit-form"
 	        class="btn btn-primary"
-	        [disabled]="exampleForm.invalid">Submit
+        (click)="uploader.uploadAll()"
+	     [disabled]="exampleForm.invalid || uploader.getNotUploadedItems().length === 0">Submit
 	</button>
+
+
+			</div>
 </form>
