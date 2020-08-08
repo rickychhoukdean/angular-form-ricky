@@ -10,8 +10,7 @@ const uploadAPI =
   styleUrls: ["./form.component.scss"]
 })
 export class FormComponent implements OnInit {
-
-
+  
   model: Example = new Example();
   submitted: Boolean = false;
   errorMsg: String = "";

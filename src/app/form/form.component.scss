@@ -1,24 +1,45 @@
-@import '../../styles/mixins.scss';
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
+.form-group {
+  width: 70%;
+  text-align: center;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 
-.form-group{
-  width:70%;
-  text-align:center;
-  margin:auto;
-  margin-top:2rem;
-  margin-bottom:2rem;
-
- @include respond(tab-port){
-      width:100%
-    }
+  @include respond(tab-port) {
+    width: 100%;
+  }
 }
 
+.form {
+  &--radio {
+    margin: 0rem 3rem;
+    display: inline-block;
 
-.form--radio{
-  margin:3rem;
-  display:inline-block;
+    @include respond(phone) {
+      display: block;
+    }
+  }
 
-  @include respond(phone){
-    display:block;
+  &--label-text {
+    .form--label-text {
+      font-size: $default-font-size;
+      font-weight: 700;
+
+      @include respond(phone) {
+        font-size: $small-font-size;
+      }
+    }
+  }
+
+  &--error-message {
+    margin: 1rem;
+    color: red;
+    font-size: $default-font-size;
+    @include respond(phone) {
+      font-size: $small-font-size;
+    }
   }
 }
