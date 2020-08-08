@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Example</title>
+	<base href="/">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div class="container">
+<header>
+	<p>Example</p>
+</header>
+<h1 class="header">Example Form</h1>
+
+<section id="list-section"><ul class="image-list">
+  <li class="image-list--item">
+    <img
+      class="image-list--item--photo"
+      src="https://images.pexels.com/photos/736230/pexels-photo-736230.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      alt="Flower"
+    />
+  </li>
+  <li class="image-list--item">
+    <img
+      class="image-list--item--photo"
+      src="assets/random.svg"
+      alt="Pattern SVG"
+    />
+  </li>
+</ul>
+</section>
+
+<section id=form-section>
+	<div [hidden]="!submitted" class="alert alert-success">
+		Form has been submitted
+	</div>
+
+	<!-- Error handinling from form post request -->
+	<div class="alert alert-danger" *ngIf="errorMsg">
+		{{errorMsg}}
+	</div>
+
+	<form id="form" #exampleForm="ngForm" novalidate>
+		<!-- Name input field -->
+		<div class="form-group">
+			<label for="name">Display Name:</label>
+			<input
+      id="name"
+      class="form-control"
+      required
+      type="text"
+      [(ngModel)]="model.name"
+      name="name"
+      #name="ngModel"
+      pattern="^\S*$"
+    />
+			<div *ngIf="name.errors && (name.invalid ||name.touched)">
+				<div *ngIf="name.errors.required && name.touched">Name is required</div>
+				<div *ngIf="name.errors.pattern">No Spaces allowed</div>
+			</div>
+		</div>
+
+		<!-- DOB input field -->
+		<div class="form-group">
+			<label for="dob">Date of birth:</label>
+			<input
+      id="dob"
+      class="form-control"
+      required
+      type="date"
+      [(ngModel)]="model.dob"
+      name="dob"
+    />
+  </div>
+		<!-- Option radio buttons field -->
+				<div class="form-group">
+					<fieldset>
+						<legend>Choose an option</legend>
+						<div class="form--radio">
+							<label for="option1">Option 1</label>
+							<input
+        id="option1"
+        type="radio"
+        value="option1"
+        name="option"
+        [(ngModel)]="model.option"
+        required
+      />
+      </div>
+							<div class="form--radio">
+								<label for="option2">Option 2</label>
+								<input
+        id="option2"
+        type="radio"
+        value="option2"
+        name="option"
+        [(ngModel)]="model.option"
+      />
+      </div>
+					</fieldset>
+				</div>
+
+			<!-- File upload field -->
+			<div class="form-group">
+				<label for="file">Upload File:</label>
+				<input
+        class="file-button"
+      type="file"
+      name="file"
+      ng2FileSelect
+      [uploader]="uploader"
+      [(ngModel)]="model.file"
+    />
+  </div>
+
+
+				<!-- Submit button buttons field -->
+				<div class="form-group">
+					<button
+      type="submit"
+      name="submit"
+      value="submit-form"
+      class="btn btn-primary"
+      (click)="uploader.uploadAll()"
+      [disabled]="exampleForm.invalid || uploader.getNotUploadedItems().length === 0"
+    >
+      Send
+    </button>
+				</div>
+	</form>
+</section>
+
+<p>Read more <span aria-label="[About our offer]" aria-hidden="true"></span></p>
+
+<p><strong><q>The most beautiful experience we can have is the mysterious</q></strong> - Albert Einstein.</p>
+
+
+<footer><p>© 2020 Example</p></footer>
+</div>
+</body>
+
+</html>

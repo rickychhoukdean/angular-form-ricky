@@ -12,3 +12,13 @@
       width:100%
     }
 }
+
+
+.form--radio{
+  margin:3rem;
+  display:inline-block;
+
+  @include respond(phone){
+    display:block;
+  }
+}

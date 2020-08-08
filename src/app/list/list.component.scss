@@ -1,8 +1,22 @@
 
+@import '../../styles/mixins.scss';
+
 .image-list {
   text-align: center;
   list-style-type: none;
+   @include respond(phone){
+      padding:0;}
   &--item {
-    width: 50%;
+   
+    &--photo{
+      width:250px;
+      height:250px;
+
+
+ @include respond(phone){
+      width:100%;
+    }
+
+    }
   }
 }

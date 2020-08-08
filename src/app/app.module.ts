@@ -5,13 +5,12 @@ import { FormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { FormComponent } from "./form/form.component";
 import { ListComponent } from "./list/list.component";
-import { HttpService } from "./form/http.service";
 import { FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule, FileUploadModule],
   declarations: [AppComponent, FormComponent, ListComponent],
   bootstrap: [AppComponent],
-  providers: [HttpService]
+  providers: []
 })
 export class AppModule {}
