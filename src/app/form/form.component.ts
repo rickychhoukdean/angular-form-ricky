@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Example } from "./example";
 import { FileUploader, FileItem, ParsedResponseHeaders } from "ng2-file-upload";
+//Post route to repl.it Node server
 const uploadAPI =
-  "https://Basic-backend-eA-coding-test.rickychhoukdean.repl.co";
+  "https://Basic-backend-eA-coding-test.rickychhoukdean.repl.co/api";
 
 @Component({
   selector: "app-form",
@@ -10,7 +11,7 @@ const uploadAPI =
   styleUrls: ["./form.component.scss"]
 })
 export class FormComponent implements OnInit {
-  
+
   model: Example = new Example();
   submitted: Boolean = false;
   errorMsg: String = "";

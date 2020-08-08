@@ -23,6 +23,7 @@
       #name="ngModel"
       pattern="^\S*$"
     />
+      <!-- Name input error handling for empty name and name with spaces -->
     <div *ngIf="name.errors && (name.invalid ||name.touched)">
       <div class="form--error-message" *ngIf="name.errors.required && name.touched">Name is required</div>
       <div class="form--error-message" *ngIf="name.errors.pattern">No Spaces allowed</div>
@@ -76,13 +77,14 @@
       class="file-button"
       type="file"
       name="file"
+      id="file"
       ng2FileSelect
       [uploader]="uploader"
       [(ngModel)]="model.file"
     />
   </div>
 
-  <!-- Submit button buttons field -->
+  <!-- Submit button buttons field, will show as disabled if the form hasn't been fully completed -->
   <div class="form-group">
     <button
       type="submit"

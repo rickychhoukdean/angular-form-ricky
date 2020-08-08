@@ -12,7 +12,6 @@
     "@angular/platform-browser-dynamic": "10.0.8",
     "@angular/router": "10.0.8",
     "core-js": "2.6.11",
-    "file-saver": "2.0.2",
     "ng2-file-upload": "^1.4.0",
     "rxjs": "6.6.2",
     "rxjs-compat": "6.6.2",

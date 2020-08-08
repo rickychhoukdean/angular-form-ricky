@@ -8,7 +8,7 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 
-  @include respond(tab-port) {
+  @include respond(phone) {
     width: 100%;
   }
 }
@@ -17,7 +17,6 @@
   &--radio {
     margin: 0rem 3rem;
     display: inline-block;
-
     @include respond(phone) {
       display: block;
     }
@@ -27,7 +26,6 @@
     .form--label-text {
       font-size: $default-font-size;
       font-weight: 700;
-
       @include respond(phone) {
         font-size: $small-font-size;
       }
